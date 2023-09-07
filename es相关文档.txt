@@ -1,0 +1,44 @@
+重启ES
+ES不支持直接重启，只能先结束掉进程，在运行脚本重启。下面是操作的过程：
+
+
+--关闭服务
+查看ES进程
+ps -ef|grep elastic
+查看  /elasticsearch/jdk/bin/java目录
+杀死ES进程
+kill -9 1302
+ps -ef|grep elastic
+
+--启动
+切换到elasticsearch说在bin目录执行
+cd /usr/local/setup/elasticsearch-7.6.2/bin
+#后台运行
+./elasticsearch -d
+ps -ef|grep elastic
+
+--安装插件
+在安装目录下运行的离线安装命令为
+./bin/elasticsearch-plugin install file:///usr/local/setup/elasticsearch-7.6.2/ingest-attachment-7.6.2.zip
+
+
+--在Kibana上创建，查找，删除索引
+put /index   --创建索引
+GET /index  --查看索引
+Delete /index  --删除索引
+GET /docwrite/_search   --使用ik分词器关键词搜索
+{
+  "query": {
+    "match": {
+      "attachment.content": {
+        "query": "实验一",
+        "analyzer": "ik_smart"
+      }
+    }
+  }
+}
+
+
+
+Elasticsearch概念
+https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU4Mjk0MjkxNA==&action=getalbum&album_id=1343685605573738497&scene=173&from_msgid=2247484551&from_itemidx=1&count=3&nolastread=1#wechat_redirect
