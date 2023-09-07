@@ -15,6 +15,8 @@
 安装ik分词器
 
 在Kibana中执行
+'''
+#定义文本抽取管道
 PUT /_ingest/pipeline/attachment
 {
     "description": "Extract attachment information",
@@ -32,7 +34,8 @@ PUT /_ingest/pipeline/attachment
         }
     ]
 }
-定义文本抽取管道
+
+'''
 
 
 打开`Test`目录，请运行前在Contant中修改变量为自己的变量
@@ -61,7 +64,7 @@ elo.setClient(client);
 
 
 执行如下代码实现对应的增删改查功能
-```
+```java
 /*将对应目录下的文件上传至Elasticsearch服务器。*/
 @Test
 public void dirUploadTest() throws IOException {
@@ -75,7 +78,7 @@ public void dirUploadTest() throws IOException {
 ```
 
 
-```
+```java
 /*根据搜索的分词结果搜索对应的文档*/
 @Test
 public void fileSearchTest() throws IOException {
